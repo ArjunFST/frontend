@@ -86,17 +86,17 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <h3 className="text-black">CRUD Application</h3>
-      <div className="input-search">
+  <div  className="container">
+          <h3 className="text-black text-center mt-4">User Verification</h3>
+          <div className="input-search d-flex justify-content-start gap-2">
         <input
-          className="input"
+          className="border bg-body-secondary rounded-5 px-4"
           onChange={handleSearch}
           placeholder="Search by name or city"
         />
         <button
           type="button"
-          className="btn btn-primary"
+          className="btn btn-primary rounded-5 border-2"
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
           onClick={handleAddRecord}
@@ -104,6 +104,9 @@ function App() {
           Add Record
         </button>
       </div>
+     <div className="d-flex gap-4 mt-3">
+     <div className="col-6">
+     
       <table className="table">
         <thead>
           <tr>
@@ -123,24 +126,43 @@ function App() {
               <td>{data.age}</td>
               <td>{data.city}</td>
               <td>
-                <button
-                  type="button"
-                  className="btn btn-success"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
-                  onClick={() => handleUpdateUser(data)}
-                >
-                  Edit
-                </button>
+              <div
+  style={{ cursor: "pointer" }}
+  className="ms-2"
+  onClick={() => {
+    console.log("Clicked data:", data);
+    handleUpdateUser(data);
+  }}
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+  title="Edit"
+>
+  <img
+    src="/images/edit.svg"
+    alt="Edit"
+    height={20}
+    width={20}
+  />
+</div>
+
+
+              
               </td>
               <td>
-                <button
-                  type="button"
-                  className="btn btn-danger"
-                  onClick={() => handleDelete(data.id)}
-                >
-                  Delete
-                </button>
+              <div
+  style={{ cursor: "pointer" }}
+  className="ms-3"
+  onClick={() => handleDelete(data.id)}
+  title="Delete"
+>
+  <img
+    src="/images/trash.svg"
+    alt="Delete"
+    height={20}
+    width={20}
+  />
+</div>
+  
               </td>
             </tr>
           ))}
@@ -235,6 +257,13 @@ function App() {
         </div>
       </div>
     </div>
+      <div className="col-6 bg-black rounded-5">
+          <h3 className="text-center text-white mt-2">Verfied Users</h3>
+          <div className="">
+          </div>
+      </div>
+     </div>
+  </div>
   );
 }
 
